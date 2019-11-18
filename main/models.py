@@ -1,15 +1,16 @@
 from django.db import models
 
 # Create your models here.
-class User(models.Model):
-    fname = models.CharField(max_length=30)
-    lname = models.CharField(max_length=30)
+class ToDoList(models.Model):
+    name = models.CharField(max_length=200)
 
-class Person(models.Model):
-    SHIRT_SIZES = (
-    ('S', 'Small'),
-    ('M', 'Medium'),
-    ('L', 'Large')
-    )
-    name = models.CharField(max_length=60)
-    shirt_size = models.CharField(max_length=1, choices=SHIRT_SIZES)
+    def __str__(self):
+        return self.name
+
+class Item(models.Model):
+    todolist = models.ForeignKey(ToDoList, on_delete=models.CASCADE)
+    text = models.CharField(max_length=300)
+    complete = models.BooleanField()
+
+    def __str__(self):
+        return self.text
