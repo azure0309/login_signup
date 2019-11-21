@@ -2,5 +2,15 @@
 {% block title %} Vies List {% endblock %}
 
 {% block content %}
-<<h1>{{ls.name}}</h1>
+  <h1>{{ls.name}}</h1>
+  <uL>
+    {% for item in ls.item_set.all %}
+        {% if item.complete == False %}
+           <li>
+            {{item.text}}
+           </li>
+        {% endif %}
+    {% endfor %}
+  </ul>
+
 {% endblock %}
