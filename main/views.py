@@ -16,7 +16,7 @@ def home(response):
 
 
 def create(response):
-	if response.method == "GET":
+	if response.method == "POST":
 		form = CreateNewList()
 
 		if form.is_valid():
